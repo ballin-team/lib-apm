@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+
+    "strict": true,
+
+    /* Additional Checks */
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Debugging Options */
+    "traceResolution": false,
+    "listEmittedFiles": false,
+    "listFiles": false,
+    "pretty": true,
+
+    "lib": ["es6", "dom"],
+    "types": ["node", "jest"],
+    "typeRoots": ["node_modules/@types", "src/types"],
+    "sourceMap": true,
+    "inlineSources": true,
+    "sourceRoot": "/"
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules/**", ".eslintrc.json"],
+  "compileOnSave": false
+}

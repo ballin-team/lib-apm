@@ -1,0 +1,40 @@
+{
+  "name": "lib-apm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "start": "npx ts-node src/index.ts",
+    "build": "tsc",
+    "sonar:setup": "bash docker/sonar/setup.sh",
+    "sonar:scanner": "bash docker/sonar/scanner.sh",
+    "test": "jest --config jest.json",
+    "test:cov": "jest --config jest.json --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config jest.json",
+    "format": "prettier --write \"src/**/*.ts\" \"__test__/**/*.ts\"",
+    "lint": "eslint \"{src,apps,libs,__test__}/**/*.ts\" --fix"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "eslint": "^8.9.0",
+    "husky": "^7.0.4",
+    "jest": "^27.5.1",
+    "jest-sonar": "^0.2.12",
+    "lint-staged": "^12.3.4",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.3",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {},
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ballin-team/lib-apm/issues"
+  },
+  "homepage": "https://github.com/ballin-team/lib-apm#readme"
+}
