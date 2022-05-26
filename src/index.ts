@@ -1,1 +1,1 @@
-console.log('initialize a new project');
+export * from './logger';
