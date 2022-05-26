@@ -19,7 +19,6 @@ export class CoralogixTransport extends BaseTransport {
   save(logObject: ILogObject): void {
     try {
       const message = this.client.buildLog(logObject);
-      console.log(this.requestId(), 'aquiiiiiiiii');
       switch (logObject.logLevel) {
         case 'silly':
         case 'trace':

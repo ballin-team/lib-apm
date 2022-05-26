@@ -25,12 +25,12 @@ export class CoralogixService {
     return {
       x_request_id: logObject.requestId,
       event: logObject.functionName || logObject.methodName || 'anonymous',
+      path: logObject.filePath || null,
       context: logObject.argumentsArray,
     };
   }
 
   public sendLog({ severity, className, methodName, text }: any): void {
-    console.log(severity, className, methodName, text);
     return this.coralogix.addLog(
       new Log({
         severity,
