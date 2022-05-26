@@ -1,7 +1,7 @@
 {
-  "name": "lib-apm",
+  "name": "@ballin-team/lib-apm",
   "version": "1.0.0",
-  "description": "",
+  "description": "<h1 align=\"center\">   👀 </h1>",
   "main": "dist/index.js",
   "scripts": {
     "prepare": "husky install",
@@ -44,5 +44,9 @@
   "bugs": {
     "url": "https://github.com/ballin-team/lib-apm/issues"
   },
-  "homepage": "https://github.com/ballin-team/lib-apm#readme"
+  "homepage": "https://github.com/ballin-team/lib-apm#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ballin-team/lib-apm.git"
+  }
 }
