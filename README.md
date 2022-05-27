@@ -56,6 +56,11 @@ const logger = Logger.createLogger({
         "category": ""
       }
     },
+    {
+      "provider": "sentry",
+      "minLevel": "info",
+      "enabled": true
+    },
   ]
 });
 ```
@@ -125,6 +130,11 @@ const configLogger = () => {
           subsystemName: "",
           category: "",
         }
+      },
+      {
+        provider: 'sentry',
+        minLevel: 'info',
+        enabled: true
       },
     ]
   })

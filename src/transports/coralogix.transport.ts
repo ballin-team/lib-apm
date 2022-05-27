@@ -7,7 +7,7 @@ import { Severity } from 'coralogix-logger';
 export class CoralogixTransport extends BaseTransport {
   client: CoralogixService;
 
-  constructor(options: IOptions) {
+  constructor(options: IOptions | undefined) {
     super(options);
     this.client = new CoralogixService(options);
   }

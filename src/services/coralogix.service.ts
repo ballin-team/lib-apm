@@ -5,20 +5,20 @@ import { IOptions } from '../transports';
 export class CoralogixService {
   private coralogix: CoralogixLogger;
 
-  constructor(options: IOptions) {
+  constructor(options: IOptions | undefined) {
     this.coralogix = this.init(options);
   }
 
-  init(options: IOptions) {
+  init(options: IOptions | undefined) {
     CoralogixLogger.configure(
       new LoggerConfig({
-        applicationName: options.applicationName,
-        privateKey: options.privateKey,
-        subsystemName: options.subsystemName,
+        applicationName: options?.applicationName,
+        privateKey: options?.privateKey,
+        subsystemName: options?.subsystemName,
       })
     );
 
-    return new CoralogixLogger(options.category);
+    return new CoralogixLogger(options?.category || 'undefined');
   }
 
   public buildLog(logObject: ILogObject) {

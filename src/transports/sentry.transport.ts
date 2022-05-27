@@ -6,7 +6,7 @@ import {IOptions} from "./interfaces.transport";
 export class SentryTransport extends BaseTransport {
   private sentry: any;
 
-  constructor(options: IOptions) {
+  constructor(options: IOptions | undefined) {
     super(options);
     this.sentry = Sentry;
   }

@@ -5,7 +5,7 @@ export interface ILoggerSettingsTransport {
   provider: 'coralogix' | 'sentry' ;
   minLevel?: TLogLevelName;
   enabled?: boolean;
-  options: IOptions;
+  options?: IOptions;
 }
 
 export interface ILoggerSettings extends ISettingsParam {

@@ -4,7 +4,7 @@ import { IOptions } from './interfaces.transport';
 export abstract class BaseTransport {
   requestId: () => string;
 
-  constructor(protected options: IOptions) {
+  constructor(protected options: IOptions | undefined) {
     this.requestId = () => '';
   }
 
