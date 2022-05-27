@@ -27,7 +27,7 @@
     "typeRoots": ["node_modules/@types", "src/types"],
     "sourceMap": true,
     "inlineSources": true,
-    "sourceRoot": "/",
+    "sourceRoot": "/"
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules/**", ".eslintrc.json"],
