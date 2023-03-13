@@ -9,7 +9,7 @@ export class GcpLoggingTransport extends BaseTransport {
   }
 
   buildLog(logObject: ILogObject) {
-    return {
+    return JSON.stringify({
       x_request_id: logObject.requestId,
       timestamp: logObject.date.toISOString(),
       sourceLocation: {
@@ -17,11 +17,11 @@ export class GcpLoggingTransport extends BaseTransport {
         line: String(logObject.lineNumber),
         function: logObject.functionName || logObject.methodName || 'anonymous',
       },
-      textPayload: JSON.stringify(logObject.argumentsArray[0], null, 2),
+      textPayload: JSON.stringify(logObject.argumentsArray[0]),
       jsonPayload: logObject.toJSON(),
       severity: logObject.logLevel.toUpperCase(),
       message: logObject.toJSON(),
-    }
+    });
   }
 
   save(logObject: ILogObject): void {
