@@ -120,4 +120,25 @@ export class Logger extends TsLogger {
       }
     }
   }
+
+  /**
+   *  This method is used for get custom data
+   *  in the current context
+   */
+  public getData<T>(): T {
+    return get('data');
+  }
+
+  /**
+   *  This method is used for set a custom data in the context
+   * @param data - any data that you want access in the contex.
+   */
+  public setData(data: unknown) {
+    if (data) {
+      set('data', data);
+      for (const transport of this.transports) {
+        transport.setData(() => get('data'))
+      }
+    }
+  }
 }

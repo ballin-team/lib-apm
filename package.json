@@ -1,6 +1,6 @@
 {
   "name": "@ballin-team/lib-apm",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "<h1 align=\"center\">   👀 </h1>",
   "main": "dist/index.js",
   "scripts": {

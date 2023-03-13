@@ -35,7 +35,7 @@ export const get = (key: string) => {
  *  @param key - key is a unique identifier.
  *  @param value - storage data.
  */
-export const set = (key: string, value: string) => {
+export const set = (key: string, value: unknown) => {
   if (ns && ns.active) {
     return ns.set(key, value);
   }
