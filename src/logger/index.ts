@@ -3,7 +3,7 @@ import { Logger as TsLogger, ISettingsParam } from 'tslog';
 import { Request, Response, NextFunction } from 'express';
 import { asyncContextBlock, contextBlock, contextMiddleware, get, set } from '../contex';
 import { ILoggerSettings } from './interfaces.logger';
-import {CoralogixTransport, SentryTransport} from '../transports';
+import {CoralogixTransport, GcpLoggingTransport, SentryTransport} from '../transports';
 
 /**
  * 📝 Robust logger with custom transports for APM (Application Performance Monitoring)
@@ -58,6 +58,9 @@ export class Logger extends TsLogger {
               break;
             case 'sentry':
               this.initTransport(new SentryTransport(item.options), item);
+              break;
+            case 'gcpLogging':
+              this.initTransport(new GcpLoggingTransport(item.options), item);
               break;
           }
         }

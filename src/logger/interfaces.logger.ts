@@ -2,7 +2,7 @@ import { TLogLevelName, ISettingsParam } from 'tslog';
 import { IOptions } from '../transports';
 
 export interface ILoggerSettingsTransport {
-  provider: 'coralogix' | 'sentry' ;
+  provider: 'coralogix' | 'sentry' | 'gcpLogging' ;
   minLevel?: TLogLevelName;
   enabled?: boolean;
   options?: IOptions;
