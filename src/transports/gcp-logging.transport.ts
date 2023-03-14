@@ -10,17 +10,15 @@ export class GcpLoggingTransport extends BaseTransport {
 
   buildLog(logObject: ILogObject) {
     return JSON.stringify({
-      x_request_id: logObject.requestId,
-      timestamp: logObject.date.toISOString(),
+      severity: logObject.logLevel.toUpperCase(),
+      message: typeof logObject.argumentsArray[0] === 'string' ? logObject.argumentsArray[0] : JSON.stringify(logObject.argumentsArray[0]),
+      data: JSON.stringify(logObject.argumentsArray),
+      x_request_id: logObject.requestId || 'INTERNAL',
       sourceLocation: {
         file: logObject.filePath,
         line: String(logObject.lineNumber),
         function: logObject.functionName || logObject.methodName || 'anonymous',
       },
-      textPayload: JSON.stringify(logObject.argumentsArray[0]),
-      jsonPayload: logObject.toJSON(),
-      severity: logObject.logLevel.toUpperCase(),
-      message: logObject.toJSON(),
     });
   }
 
@@ -43,7 +41,7 @@ export class GcpLoggingTransport extends BaseTransport {
         console.error(message);
         break;
       case "fatal":
-        console.debug(message);
+        console.error(message);
         break;
     }
   }
