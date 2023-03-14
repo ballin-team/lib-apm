@@ -12,7 +12,7 @@ export class GcpLoggingTransport extends BaseTransport {
     return JSON.stringify({
       severity: logObject.logLevel.toUpperCase(),
       message: typeof logObject.argumentsArray[0] === 'string' ? logObject.argumentsArray[0] : JSON.stringify(logObject.argumentsArray[0]),
-      data: JSON.stringify(logObject.argumentsArray),
+      data: logObject.argumentsArray,
       x_request_id: logObject.requestId || 'INTERNAL',
       sourceLocation: {
         file: logObject.filePath,
