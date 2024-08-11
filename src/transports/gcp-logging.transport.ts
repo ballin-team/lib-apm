@@ -8,7 +8,28 @@ export class GcpLoggingTransport extends BaseTransport {
     super(options);
   }
 
+  getCurrentTraceFromAgent(): string | null {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const agent = (global as any)._google_trace_agent;
+    if (!agent || !agent.getCurrentContextId || !agent.getWriterProjectId) {
+      return null;
+    }
+
+    const traceId = agent.getCurrentContextId();
+    if (!traceId) {
+      return null;
+    }
+
+    const traceProjectId = agent.getWriterProjectId();
+    if (!traceProjectId) {
+      return null;
+    }
+
+    return `projects/${traceProjectId}/traces/${traceId}`;
+  }
+
   buildLog(logObject: ILogObject) {
+    const trace = this.getCurrentTraceFromAgent();
     return JSON.stringify({
       severity: logObject.logLevel.toUpperCase(),
       message: typeof logObject.argumentsArray[0] === 'string' ? logObject.argumentsArray[0] : JSON.stringify(logObject.argumentsArray[0]),
@@ -19,6 +40,7 @@ export class GcpLoggingTransport extends BaseTransport {
         line: String(logObject.lineNumber),
         function: logObject.functionName || logObject.methodName || 'anonymous',
       },
+      trace,
     });
   }
 
