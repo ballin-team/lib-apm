@@ -35,12 +35,12 @@ export class GcpLoggingTransport extends BaseTransport {
       message: typeof logObject.argumentsArray[0] === 'string' ? logObject.argumentsArray[0] : JSON.stringify(logObject.argumentsArray[0]),
       data: logObject.argumentsArray,
       x_request_id: logObject.requestId || 'INTERNAL',
-      sourceLocation: {
+      'logging.googleapis.com/sourceLocation': {
         file: logObject.filePath,
         line: String(logObject.lineNumber),
         function: logObject.functionName || logObject.methodName || 'anonymous',
       },
-      trace,
+      'logging.googleapis.com/trace': trace,
     });
   }
 
